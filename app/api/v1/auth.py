@@ -29,6 +29,8 @@ def login(
 ):
     db_user = db.query(User).filter(User.username == username).first()
     if not db_user or not verify_password(password, db_user.hashed_password):
-        raise HTTPException(status_code=401, detail="Invalid credentials")
+        # Return error in the requested language
+        from app.utils.response import get_message
+        raise HTTPException(status_code=401, detail=get_message("unauthorized"))
     access_token = create_access_token(data={"sub": db_user.username, "role": db_user.role.value})
     return {"access_token": access_token, "token_type": "bearer"}

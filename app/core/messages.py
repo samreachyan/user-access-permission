@@ -6,7 +6,8 @@ MESSAGES = {
         "forbidden": "Forbidden.",
         "not_found": "Resource not found.",
         "bad_request": "Bad request.",
-        "internal_error": "Internal server error."
+        "internal_error": "Internal server error.",
+        "granted": "You are granted!"
     },
     "km": {
         "user_created": "បានបង្កើតអ្នកប្រើប្រាស់ដោយជោគជ័យ។",
@@ -15,7 +16,8 @@ MESSAGES = {
         "forbidden": "ហាមឃាត់។",
         "not_found": "រកមិនឃើញធនធាន។",
         "bad_request": "សំណើមិនត្រឹមត្រូវ។",
-        "internal_error": "បញ្ហាក្នុងម៉ាស៊ីនមេ។"
+        "internal_error": "បញ្ហាក្នុងម៉ាស៊ីនមេ។",
+        "granted": "អ្នកគឺមានសិទ្ធីចូលប្រើប្រាស់!"
     },
     "vn": {
         "user_created": "Tạo người dùng thành công.",
@@ -24,7 +26,8 @@ MESSAGES = {
         "forbidden": "Bị cấm.",
         "not_found": "Không tìm thấy tài nguyên.",
         "bad_request": "Yêu cầu không hợp lệ.",
-        "internal_error": "Lỗi máy chủ nội bộ."
+        "internal_error": "Lỗi máy chủ nội bộ.",
+        "granted": "Bạn không được quyền sử dụng!"
     }
 }
 

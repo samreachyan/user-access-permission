@@ -1,11 +1,9 @@
 from fastapi import Depends, HTTPException, status, Request
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
-from sqlalchemy.orm import Session
 from app.core.config import settings
 from app.db.session import SessionLocal
-from app.models.user import UserRole
-from app.utils.response import get_language
+from app.utils.response import get_language, get_message
 
 # Use this for JWT-protected endpoints only (not for /login or /register)
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
@@ -34,8 +32,10 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
         raise credentials_exception
 
 def require_role(required_roles):
-    def role_checker(current_user=Depends(get_current_user)):
+    def role_checker(request: Request, current_user=Depends(get_current_user)):
+        lang = get_language(request)
         if current_user["role"] not in required_roles:
-            raise HTTPException(status_code=403, detail="Forbidden")
+            # Return translated forbidden message
+            raise HTTPException(status_code=403, detail=get_message("forbidden", lang))
         return current_user
     return role_checker
